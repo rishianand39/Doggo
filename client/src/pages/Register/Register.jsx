@@ -35,6 +35,7 @@ const Register = () => {
           dispatch(register())
           navigate("/login")
         } catch (error) {
+          console.log(error)
           dispatch(failure(error.response.data))
         }
       }
@@ -68,7 +69,7 @@ const Register = () => {
               CREATE
             </button>
 
-            {auth.isFailure && <span className={styles.error}>{auth.message}</span>}
+            {(auth.isFailure || auth.isLoading) && <span className={styles.error}>{auth.message}</span>}
             <div className={styles.createaccount}>
              <Link to="/login">ALREADY HAVE A ACCOUNT?</Link>
             </div>

@@ -50,7 +50,7 @@ const handleSubmit=async(e)=>{
         <input onChange={handleInputs} type="text" placeholder="email" name="email"/>
         <input onChange={handleInputs} type="password" placeholder="password" name="password" />
         <button onClick={handleSubmit} disabled={auth.isLoading}>LOGIN</button>
-        {auth.isFailure && <span className={styles.error}>{auth.message}</span>}
+        {(auth.isFailure || auth.isloading) && <span className={styles.error}>{auth.message}</span>}
         <div>
         <Link to="/register" className="links">CREATE A NEW ACCOUNT</Link>
         </div>
