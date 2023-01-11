@@ -28,7 +28,7 @@ const router = createBrowserRouter([
         element: <BreadLists />,
       },
       {
-        path: "/bread-detail",
+        path: "/bread-detail/:id",
         element: <BreadDetail />,
       },
       {
