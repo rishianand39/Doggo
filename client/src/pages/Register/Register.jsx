@@ -31,7 +31,7 @@ const Register = () => {
       const create=async()=>{
         dispatch(loading("Please wait we are creating your account"))
         try {
-          let user=await axios.post("http://localhost:8080/signup",data)
+          let user=await axios.post("https://doggo-d0xa.onrender.com/signup",data)
           dispatch(register())
           navigate("/login")
         } catch (error) {
