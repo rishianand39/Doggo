@@ -20,11 +20,11 @@ router.post("/signin", async (req, res) => {
   try {
     let user=await UserModel.findOne({email:req.body.email})
     if(!user){
-      return res.status(400).json("Wrong username or password or role")
+      return res.status(400).json("Wrong username or password")
     }
 
     if(user.password!==req.body.password){
-      return res.status(400).json("Wrong username or password or role")
+      return res.status(400).json("Wrong username or password")
     }
 
     return res.status(200).json(user);
