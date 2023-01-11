@@ -23,10 +23,12 @@ const BreadDetail = () => {
   },[])
 
   return (
-    <div className={styles.container}>
-      {bread && <img src={bread[1]} alt="" /> }
-     
-    </div>
+    <>
+    {bread? 
+   ( <div className={styles.container}>
+       <img src={bread[1]} alt="bread picture" /> 
+    </div>): <h1 className={styles.loading}>Loading....</h1>}
+     </>
   )
 }
 

@@ -13,8 +13,9 @@
   justify-content: center;
 }
 .wrapper{
-      background-color: white;
+  background-color: white;
   width: 40%;
+  max-width: 100%;
   padding: 20px;
 }
 .wrapper>h1{
@@ -41,4 +42,11 @@
   font-size: 12px;
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* responsive */
+@media only screen and (min-width:0px) and (max-width:680px) {
+  .wrapper{
+    width: 100%;
+  }
 }

@@ -53,3 +53,9 @@ form>button:disabled{
 .error{
     color: red;
 }
+/* responsive */
+@media only screen and (min-width:0px) and (max-width:680px) {
+    .wrapper{
+      width: 100%;
+    }
+  }

@@ -1,9 +1,11 @@
 .container{
-    border: 1px solid red;
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
 .container>img{
     max-width: fit-content;
+}
+.loading{
+text-align: center;
 }
