@@ -1,0 +1,44 @@
+.container{
+    width: 100%;
+  height: calc(100vh - 80px);
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.5)
+    ),
+    url("https://images.pexels.com/photos/6984661/pexels-photo-6984661.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper{
+      background-color: white;
+  width: 40%;
+  padding: 20px;
+}
+.wrapper>h1{
+    font-size: 24px;
+  font-weight: 300;
+}
+.wrapper>form{
+     display: flex;
+  flex-wrap: wrap;
+}
+.wrapper>input{
+      flex: 1;
+  min-width: 40%;
+  margin: 20px 10px 0px 0px;
+  padding: 10px;
+}
+.agreement{
+     font-size: 14px;
+  margin: 20px 0px;
+}
+
+.createaccount{
+    margin: 5px 20px;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}

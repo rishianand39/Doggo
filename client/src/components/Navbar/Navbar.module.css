@@ -1,0 +1,11 @@
+.nav{
+    padding: 0 20px;
+}
+.nav>div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btn{
+    margin:0 5px;
+}
