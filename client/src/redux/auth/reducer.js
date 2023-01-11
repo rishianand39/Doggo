@@ -4,7 +4,7 @@ export const intialState={
     isLoading:false,
     isFailure:false,
     message:"",
-    user:JSON.parse(localStorage.getItem("user")) || null
+    user:JSON.parse(localStorage.getItem("user")) || null,
 }
 
 export const authReducer=(state=intialState, {type, payload})=>{

@@ -3,16 +3,22 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./Navbar.module.css";
 import { logout } from "../../redux/auth/action";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const auth = useSelector((store) => store);
+  const navigate=useNavigate()
   const dispatch = useDispatch();
-  console.log(auth);
+
 
   // loggout
   const handleLogout = () => {
     dispatch(logout("Logged Out successfully"));
+    navigate("/login")
   };
+
+
 
   return (
     <div className={styles.nav}>

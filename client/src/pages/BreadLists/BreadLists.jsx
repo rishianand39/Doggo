@@ -1,10 +1,13 @@
 import { v4 as uuid } from "uuid";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 import styles from "./BreadLists.module.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const BreadLists = () => {
+  const auth=useSelector(store=>store)
+  const navigate=useNavigate()
   const [breadList, setBreadList] = useState(null);
 
   // fetch all dog breads
@@ -20,7 +23,12 @@ const BreadLists = () => {
   };
 
   useEffect(() => {
-    getBreadsList();
+    if(auth.user){
+      getBreadsList();
+    }else{
+      navigate("/login")
+    }
+    
   }, []);
 
   return (

@@ -1,10 +1,13 @@
 import axios from 'axios';
 import styles from "./BreadDetail.module.css"
+import {useSelector} from "react-redux"
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import {useParams} from "react-router-dom"
+import {useParams,useNavigate} from "react-router-dom"
 
 const BreadDetail = () => {
+  const auth=useSelector(store=>store)
+  const navigate=useNavigate()
   const [bread,setBread]=useState()
   const {id} =useParams()
 
@@ -19,7 +22,11 @@ const BreadDetail = () => {
   }
 
   useEffect(()=>{
-    getBreadDetails()
+    if(auth.user){
+      getBreadDetails()
+    }else{
+      navigate("/login")
+    }
   },[])
 
   return (
