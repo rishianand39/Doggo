@@ -26,7 +26,7 @@ const BreadDetail = () => {
     <>
     {bread? 
    ( <div className={styles.container}>
-       <img src={bread[1]} alt="bread picture" /> 
+       <img src={bread[1]} alt="bread" /> 
     </div>): <h1 className={styles.loading}>Loading....</h1>}
      </>
   )

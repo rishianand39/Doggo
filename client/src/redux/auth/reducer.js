@@ -3,7 +3,8 @@ import { actionTypes } from "./action"
 export const intialState={
     isLoading:false,
     isFailure:false,
-    user:null
+    message:"",
+    user:JSON.parse(localStorage.getItem("user")) || null
 }
 
 export const authReducer=(state=intialState, {type, payload})=>{
@@ -11,14 +12,17 @@ export const authReducer=(state=intialState, {type, payload})=>{
         case actionTypes.LOADING:{
             return{
               ...state,
+              message:payload,
               isLoading:true  
             }
         }
         case actionTypes.SUCCESS:{
+            (localStorage.setItem("user",JSON.stringify(payload)))
             return{
               ...state,
               isLoading:false,
               isFailure:false,
+              message:"",
               user:payload 
             }
         }
@@ -26,7 +30,24 @@ export const authReducer=(state=intialState, {type, payload})=>{
             return{
               ...state,
               isLoading:false,
+              message:payload,
               isFailure:true,  
+            }
+        }
+        case actionTypes.REGISTER:{
+          return{
+            ...state,
+            isLoading:false,
+            message:payload,
+            isFailure:false,  
+          }
+      }
+        case actionTypes.LOGOUT:{
+            localStorage.removeItem("user")
+            return{
+              ...state,
+              message:payload,
+              user:null,  
             }
         }
         default:{

@@ -1,10 +1,14 @@
+import axios from "axios";
 import { useState } from "react";
-import { useSelector } from "react-redux";
-import {Link} from "react-router-dom"
+import { useSelector,useDispatch } from "react-redux";
+import {Link,useNavigate} from "react-router-dom"
+import { failure, loading, success } from "../../redux/auth/action";
 import styles from "./Login.module.css"
 
 const Login = () => {
   const auth=useSelector(store=>store);
+  const dispatch=useDispatch()
+  const navigate=useNavigate()
     const [data,setData]=useState({
     email:"",
     password:""
@@ -21,10 +25,21 @@ const Login = () => {
   // SUBMIT LOGIN FORM
 const handleSubmit=async(e)=>{
   e.preventDefault()
-  try {
+  if(data.email.trim()!=="" && data.password.trim()!==""){
     
-  } catch (error) {
-    
+    const create=async()=>{
+      dispatch(loading("Please wait we are logging"))
+      try {
+        let user=await axios.post("http://localhost:8080/signin",data)
+        dispatch(success(user.data))
+        navigate("/")
+      } catch (error) {
+        dispatch(failure(error.response.data))
+      }
+    }
+    create()
+  }else{
+   dispatch(failure("Please fill all inputs"))
   }
 }
   return (

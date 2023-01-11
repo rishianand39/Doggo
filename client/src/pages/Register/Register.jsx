@@ -1,10 +1,14 @@
 import styles from "./Register.module.css"
-import {useSelector} from "react-redux";
-import { Link } from 'react-router-dom';
+import axios from "axios"
+import {useSelector,useDispatch} from "react-redux";
+import {failure, loading, register} from "../../redux/auth/action"
+import { Link,useNavigate } from 'react-router-dom';
 import { useState } from "react";
 
 const Register = () => {
   const auth=useSelector(store=>store);
+  const dispatch =useDispatch()
+  const navigate=useNavigate()
   const [data,setData]=useState({
     email: "",
     password: "",
@@ -20,8 +24,24 @@ const Register = () => {
 
 
   // handling form submit
-  const createAccount=()=>{
-
+  const createAccount=(e)=>{
+    e.preventDefault()
+    if(data.email.trim()!=="" && data.password.trim()!==""){
+      
+      const create=async()=>{
+        dispatch(loading("Please wait we are creating your account"))
+        try {
+          let user=await axios.post("http://localhost:8080/signup",data)
+          dispatch(register())
+          navigate("/login")
+        } catch (error) {
+          dispatch(failure(error.response.data))
+        }
+      }
+      create()
+    }else{
+     dispatch(failure("Please fill all inputs"))
+    }
   }
   return (
     <div className={styles.container}>
@@ -48,10 +68,10 @@ const Register = () => {
               CREATE
             </button>
 
+            {auth.isFailure && <span className={styles.error}>{auth.message}</span>}
             <div className={styles.createaccount}>
              <Link to="/login">ALREADY HAVE A ACCOUNT?</Link>
             </div>
-            {auth.isFailure && <span>{auth.message}</span>}
           </form>
         </div>
     </div>

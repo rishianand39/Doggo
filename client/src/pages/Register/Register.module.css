@@ -43,6 +43,11 @@
   text-decoration: underline;
   cursor: pointer;
 }
+.error{
+  color: red;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
 
 /* responsive */
 @media only screen and (min-width:0px) and (max-width:680px) {
