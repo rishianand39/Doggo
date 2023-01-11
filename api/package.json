@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/server.js"
+    "server": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "build":"echo success"
   },
   "author": "@rishianand39",
   "license": "ISC",
